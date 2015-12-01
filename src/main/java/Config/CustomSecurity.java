@@ -56,5 +56,4 @@ public class CustomSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic(); // #5
     }
-
 }

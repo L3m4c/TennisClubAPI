@@ -7,3 +7,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `role`     VARCHAR(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
+
+CREATE TABLE IF NOT EXISTS `InformationTicket` (
+  `id`       BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `title`    VARCHAR(255) DEFAULT NULL,
+  `content`    CLOB DEFAULT NULL,
+  `createdDate`    DATE DEFAULT NULL,
+  `modifiedDate` DATE DEFAULT NULL,
+  `createdBy`    BIGINT(20) DEFAULT NULL,
+  `modifiedBy` BIGINT(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);

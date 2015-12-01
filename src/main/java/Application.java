@@ -1,7 +1,6 @@
-import Services.InformationTicketService;
-import Services.LoginService;
-import Services.PresentationUserService;
-import Services.UserService;
+import Services.*;
+import javax.annotation.PostConstruct;
+import org.hsqldb.util.DatabaseManagerSwing;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -22,11 +21,12 @@ import org.springframework.transaction.PlatformTransactionManager;
 import javax.sql.DataSource;
 
 @Configuration
-@ComponentScan({"Controllers", "Filters", "Config"})
+@ComponentScan({"Filters, Controllers", "Config"})
 @EnableJpaRepositories("Entity")
 @EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {
+        DatabaseManagerSwing.main(new String[]{"--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", ""});
         SpringApplication.run(Application.class, args);
     }
 
@@ -79,5 +79,9 @@ public class Application {
     @Bean
     public LoginService getLoginService() {
         return new LoginService();
+    }
+    @Bean
+    public ReservationService getReservationService() {
+        return new ReservationService ();
     }
 }
