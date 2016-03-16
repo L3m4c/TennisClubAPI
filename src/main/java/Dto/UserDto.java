@@ -16,7 +16,7 @@ public class UserDto {
     @NotNull
     private String role;
 
-    protected UserDto() {}
+    public UserDto() {}
     public UserDto(User user){
         this.id = user.getId();
         this.email = user.getEmail();

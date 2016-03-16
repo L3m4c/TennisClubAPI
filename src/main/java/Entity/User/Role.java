@@ -14,7 +14,7 @@ public class Role{
     private String roleLabel;
     private String roleKey;
 
-    protected Role() {}
+    public Role() {}
 
     public long getId() {
         return id;

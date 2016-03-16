@@ -1,13 +1,10 @@
 package Controllers;
 
 import Dto.UserDto;
-import Entity.User.User;
-import Services.UserService;
+import services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.Constants;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,7 +32,7 @@ public class UserController {
     @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
     @ResponseBody
     public UserDto select(@PathVariable long id) {
-        UserDto user = userService.select(id);
+        UserDto user = new UserDto(userService.select(id));
         return user;
     }
 }

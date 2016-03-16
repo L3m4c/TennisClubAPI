@@ -1,15 +1,17 @@
-package Services;
+package services;
 
 import Dto.UserDto;
 import Entity.User.User;
 import Entity.User.UserRepository;
 
 import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Configurable;
+
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
+@Configurable("UserService")
 public class UserService {
 
     @Resource
@@ -36,8 +38,8 @@ public class UserService {
         userRepository.delete(id);
     }
 
-    public UserDto select(long id) {
-        return new UserDto(userRepository.findOne(id));
+    public User select(long id) {
+        return userRepository.findOne(id);
     }
 
     public List<UserDto> selectAll() {

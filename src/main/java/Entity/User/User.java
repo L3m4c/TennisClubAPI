@@ -17,7 +17,7 @@ public class User implements Serializable{
     private String role;
     private String password;
 
-    protected User() {}
+    public User() {}
     public User(UserDto user){
         this.id = user.getId();
         this.email = user.getEmail();

@@ -1,7 +1,7 @@
 package Controllers;
 
 import Dto.UserDto;
-import Services.LoginService;
+import services.LoginService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;

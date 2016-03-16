@@ -1,10 +1,11 @@
 package Entity.Reservation;
 
 import Entity.User.User;
+import Entity.converter.LocalDateTimeAttributeConverter;
 import javax.persistence.*;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Reservation implements Serializable{
@@ -16,9 +17,11 @@ public class Reservation implements Serializable{
     @ManyToOne
     private User user;
 
-    private Date startTime;
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime startTime;
 
-    private Date endTime;
+    @Convert(converter = LocalDateTimeAttributeConverter.class)
+    private LocalDateTime endTime;
 
     public long getId() {
         return id;
@@ -36,19 +39,19 @@ public class Reservation implements Serializable{
         this.user = user;
     }
 
-    public Date getStartTime() {
+    public LocalDateTime getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public LocalDateTime getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
     }
 }

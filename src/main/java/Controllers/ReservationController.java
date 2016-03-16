@@ -1,11 +1,12 @@
 package Controllers;
 
 import Entity.Reservation.Reservation;
-import Services.ReservationService;
+import services.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,8 @@ public class ReservationController {
 
     @RequestMapping(value = "/reservation", method = RequestMethod.POST)
     @ResponseBody
-    public Reservation createReservation(@RequestParam(value="startTime", required = true) Date start,
-                                         @RequestParam(value="endTime", required = true) Date end,
+    public Reservation createReservation(@RequestParam(value="startTime", required = true) LocalDateTime start,
+                                         @RequestParam(value="endTime", required = true) LocalDateTime end,
                                          @RequestParam(value="userId", required = true) long userId)
 
     {
@@ -41,8 +42,8 @@ public class ReservationController {
     @RequestMapping(value = "/reservation", method = RequestMethod.PUT)
     @ResponseBody
     public Reservation updateReservation(@RequestParam(value="id", required = true) long id,
-                                         @RequestParam(value="startTime", required = true) Date start,
-                                         @RequestParam(value="endTime", required = true) Date end,
+                                         @RequestParam(value="startTime", required = true) LocalDateTime start,
+                                         @RequestParam(value="endTime", required = true) LocalDateTime end,
                                          @RequestParam(value="userId", required = true) long userId)
 
     {
