@@ -1,6 +1,6 @@
-package Entity.User;
+package entity.User;
 
-import Dto.UserDto;
+import dto.UserDto;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package Entity.PresentationUser;
+package entity.PresentationUser;
 
 import org.springframework.data.repository.CrudRepository;
 

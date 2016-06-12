@@ -1,7 +1,7 @@
-package Entity.Reservation;
+package entity.Reservation;
 
-import Entity.User.User;
-import Entity.converter.LocalDateTimeAttributeConverter;
+import entity.User.User;
+import entity.converter.LocalDateTimeAttributeConverter;
 import javax.persistence.*;
 
 import java.io.Serializable;

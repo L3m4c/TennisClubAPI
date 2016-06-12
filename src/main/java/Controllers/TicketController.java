@@ -1,6 +1,6 @@
-package Controllers;
+package controllers;
 
-import Entity.InformationTicket.InformationTicket;
+import entity.InformationTicket.InformationTicket;
 import services.InformationTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

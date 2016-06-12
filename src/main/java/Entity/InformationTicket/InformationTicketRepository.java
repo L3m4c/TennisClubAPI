@@ -1,4 +1,4 @@
-package Entity.InformationTicket;
+package entity.InformationTicket;
 
 import org.springframework.data.repository.CrudRepository;
 

@@ -1,7 +1,7 @@
 package services;
 
-import Dto.UserDto;
-import Entity.User.UserRepository;
+import dto.UserDto;
+import entity.User.UserRepository;
 
 import javax.annotation.Resource;
 import java.util.Optional;

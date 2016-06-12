@@ -1,10 +1,10 @@
 package services;
 
-import Dto.InformationTicketDto;
-import Entity.InformationTicket.InformationTicket;
-import Entity.InformationTicket.InformationTicketRepository;
+import dto.InformationTicketDto;
+import entity.InformationTicket.InformationTicket;
+import entity.InformationTicket.InformationTicketRepository;
 
-import Entity.User.User;
+import entity.User.User;
 import javax.annotation.Resource;
 
 import java.util.Date;

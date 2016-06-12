@@ -1,4 +1,4 @@
-package Config;
+package config;
 
 import javax.annotation.Resource;
 import javax.sql.DataSource;
@@ -20,20 +20,20 @@ public class CustomSecurity extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication() //TODO BDD auth
+        /*auth.inMemoryAuthentication() //TODO BDD auth
                 .withUser("test")  // #1
                 .password("test")
                 .roles("USER")
                 .and()
                 .withUser("admin") // #2
-                .password("password")
-                .roles("ADMIN", "USER");
-        /*auth.jdbcAuthentication()
+                .password("password")*
+                .roles("ADMIN", "USER");*/
+        auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(
                         "Select email, password, true as enabled from User where email=?")
                 .authoritiesByUsernameQuery(
-                        "Select email, role From User where email=?");*/
+                        "Select email, role From User where email=?");
 
     }
 

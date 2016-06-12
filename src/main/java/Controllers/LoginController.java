@@ -1,6 +1,6 @@
-package Controllers;
+package controllers;
 
-import Dto.UserDto;
+import dto.UserDto;
 import services.LoginService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,9 +20,8 @@ public class LoginController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public ResponseEntity<String> login(@RequestParam(value = "email", required = true) String email,
-                         @RequestParam(value = "password", required = true) String password) throws JsonProcessingException {
-        Optional<UserDto> userDto = loginService.findAnyUserWithEmailAndPasswordCombination(email, password);
+    public ResponseEntity<String> login(@RequestBody EmailPassword emailPassword) throws JsonProcessingException {
+        Optional<UserDto> userDto = loginService.findAnyUserWithEmailAndPasswordCombination(emailPassword.getEmail(), emailPassword.getPassword());
         if(userDto.isPresent()) {
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             String userDtoJson = ow.writeValueAsString(userDto.get());
@@ -31,5 +30,27 @@ public class LoginController {
         } else {
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
+    }
+}
+
+class EmailPassword {
+    private String email;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

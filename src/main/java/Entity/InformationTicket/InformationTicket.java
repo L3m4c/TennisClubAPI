@@ -1,6 +1,6 @@
-package Entity.InformationTicket;
+package entity.InformationTicket;
 
-import Entity.User.User;
+import entity.User.User;
 
 import javax.persistence.*;
 

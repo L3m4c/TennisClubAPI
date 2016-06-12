@@ -1,6 +1,6 @@
-package Entity.PresentationUser;
+package entity.PresentationUser;
 
-import Entity.User.User;
+import entity.User.User;
 
 import javax.persistence.*;
 import java.sql.Date;

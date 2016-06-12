@@ -1,10 +1,10 @@
 package services;
 
-import Dto.UserDto;
-import Entity.Reservation.Reservation;
-import Entity.Reservation.ReservationRepository;
-import Entity.User.User;
-import Entity.User.UserRepository;
+import dto.UserDto;
+import entity.Reservation.Reservation;
+import entity.Reservation.ReservationRepository;
+import entity.User.User;
+import entity.User.UserRepository;
 import javax.annotation.Resource;
 import main.Application;
 import org.junit.Before;

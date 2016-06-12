@@ -1,7 +1,7 @@
 package services;
 
-import Entity.PresentationUser.PresentationUser;
-import Entity.PresentationUser.PresentationUserRepository;
+import entity.PresentationUser.PresentationUser;
+import entity.PresentationUser.PresentationUserRepository;
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -1,8 +1,8 @@
 package services;
 
-import Dto.UserDto;
-import Entity.User.User;
-import Entity.User.UserRepository;
+import dto.UserDto;
+import entity.User.User;
+import entity.User.UserRepository;
 
 import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Configurable;

@@ -1,7 +1,7 @@
-package Controllers;
+package controllers;
 
-import Dto.InformationTicketDto;
-import Entity.InformationTicket.InformationTicket;
+import dto.InformationTicketDto;
+import entity.InformationTicket.InformationTicket;
 import services.InformationTicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

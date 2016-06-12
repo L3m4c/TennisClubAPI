@@ -19,8 +19,8 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
-@ComponentScan({"Filters","Controllers","Dto", "Config"})
-@EnableJpaRepositories("Entity")
+@ComponentScan({"filters", "controllers", "dto", "config"})
+@EnableJpaRepositories("entity")
 @EnableAutoConfiguration
 public class Application {
     public static void main(String[] args) {
@@ -46,7 +46,7 @@ public class Application {
         LocalContainerEntityManagerFactoryBean lef = new LocalContainerEntityManagerFactoryBean();
         lef.setDataSource(dataSource());
         lef.setJpaVendorAdapter(jpaVendorAdapter());
-        lef.setPackagesToScan("Entity");
+        lef.setPackagesToScan("entity");
         return lef;
     }
 

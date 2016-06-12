@@ -1,6 +1,6 @@
-package Controllers;
+package controllers;
 
-import Dto.UserDto;
+import dto.UserDto;
 import services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

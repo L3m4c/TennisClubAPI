@@ -1,6 +1,6 @@
-package Dto;
+package dto;
 
-import Entity.User.User;
+import entity.User.User;
 import javax.validation.constraints.NotNull;
 
 public class UserDto {
