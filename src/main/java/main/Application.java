@@ -1,7 +1,5 @@
 package main;
 
-import services.*;
-import javax.sql.DataSource;
 import org.hsqldb.util.DatabaseManagerSwing;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -17,6 +15,9 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import services.*;
+
+import javax.sql.DataSource;
 
 @Configuration
 @ComponentScan({"filters", "controllers", "dto", "config"})
@@ -25,11 +26,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class Application {
     public static void main(String[] args) {
         //if (GraphicsEnvironment.isHeadless()) {
-            DatabaseManagerSwing.main(new String[]{"--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", ""});
+        DatabaseManagerSwing.main(new String[]{"--url", "jdbc:h2:mem:testdb", "--user", "sa", "--password", ""});
         //}
         SpringApplication.run(Application.class, args);
     }
-
 
 
     @Bean
@@ -68,20 +68,24 @@ public class Application {
     public InformationTicketService getInformationTicketService() {
         return new InformationTicketService();
     }
+
     @Bean
     public PresentationUserService getPresentationUserService() {
         return new PresentationUserService();
     }
+
     @Bean
     public UserService getUserService() {
         return new UserService();
     }
+
     @Bean
     public LoginService getLoginService() {
         return new LoginService();
     }
+
     @Bean
     public ReservationService getReservationService() {
-        return new ReservationService ();
+        return new ReservationService();
     }
 }

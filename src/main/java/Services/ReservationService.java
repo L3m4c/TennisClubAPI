@@ -1,58 +1,68 @@
-package Services;
+package services;
 
-import Entity.PresentationUser.PresentationUser;
-import Entity.Reservation.Reservation;
-import Entity.Reservation.ReservationRepository;
-import Entity.User.User;
-import Entity.User.UserRepository;
+import entity.Reservation.Reservation;
+import entity.Reservation.ReservationRepository;
+import entity.User.User;
+import entity.User.UserRepository;
+import enums.RoleEnum;
+import exceptions.ModificationNotAllowedException;
+
 import javax.annotation.Resource;
-
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-/**
- * Created by L3m4C on 30/11/2015.
- */
 public class ReservationService {
-
     @Resource
     ReservationRepository reservationRepository;
     @Resource
     UserRepository userRepository;
 
-    public Reservation select(long id) {
-        return reservationRepository.findOne(id);
+    public ReservationService() {
     }
 
-    public Reservation create(Date start, Date end, long authorId) {
+    public Reservation select(long id) {
+        return (Reservation) this.reservationRepository.findOne(Long.valueOf(id));
+    }
+
+    public Reservation create(LocalDateTime start, LocalDateTime end, User author) {
         Reservation reservation = new Reservation();
         reservation.setStartTime(start);
         reservation.setEndTime(end);
-        reservation.setUser(userRepository.findOne(authorId));
-        return reservationRepository.save(reservation);
+        reservation.setUser(author);
+        return (Reservation) this.reservationRepository.save(reservation);
     }
 
-    public Reservation update(long id, Date start, Date end, long authorId) {
-        Reservation reservation = reservationRepository.findOne(id);
+    public Reservation update(long id, LocalDateTime start, LocalDateTime end, User author, User currentUser) throws ModificationNotAllowedException {
+        this.checkAuthorization(author, currentUser);
+        Reservation reservation = (Reservation) this.reservationRepository.findOne(Long.valueOf(id));
         reservation.setStartTime(start);
         reservation.setEndTime(end);
-        reservation.setUser(userRepository.findOne(authorId));
-        return reservationRepository.save(reservation);
+        reservation.setUser(author);
+        return (Reservation) this.reservationRepository.save(reservation);
     }
 
-    public void delete(long id) {
-        reservationRepository.delete(id);
+    public void delete(long id, User currentUser) throws ModificationNotAllowedException {
+        this.checkAuthorization(((Reservation) this.reservationRepository.findOne(Long.valueOf(id))).getUser(), currentUser);
+        this.reservationRepository.delete(Long.valueOf(id));
+    }
+
+    private void checkAuthorization(User author, User currentUser) throws ModificationNotAllowedException {
+        if (author.getId() != currentUser.getId() && !currentUser.getRole().equals(RoleEnum.ADMIN.getValue())) {
+            throw new ModificationNotAllowedException("Your are not allowed to edit this reservation !");
+        }
     }
 
     public List<Reservation> selectAll() {
-        return StreamSupport.stream(reservationRepository.findAll().spliterator(), false)
-                .collect(Collectors.toList());
-    }
-    public List<Reservation> selectAll(List<Long> id) {
-        return StreamSupport.stream(reservationRepository.findAll(id).spliterator(), false)
-                .collect(Collectors.toList());
+        return (List) StreamSupport.stream(this.reservationRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
+    public List<Reservation> selectAll(List<Long> id) {
+        return (List) StreamSupport.stream(this.reservationRepository.findAll(id).spliterator(), false).collect(Collectors.toList());
+    }
+
+    public boolean isInCollisionWithAnotherReservation(Reservation reservation) {
+        return !this.reservationRepository.findReservationBetweenStartAndEndDate(reservation.getStartTime(), reservation.getEndTime()).isEmpty();
+    }
 }

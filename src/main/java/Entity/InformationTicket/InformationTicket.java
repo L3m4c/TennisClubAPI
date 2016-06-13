@@ -3,7 +3,6 @@ package entity.InformationTicket;
 import entity.User.User;
 
 import javax.persistence.*;
-
 import java.util.Date;
 
 @Entity
@@ -23,7 +22,8 @@ public class InformationTicket {
     @ManyToOne
     private User modifiedBy;
 
-    public InformationTicket() {}
+    public InformationTicket() {
+    }
 
     public long getId() {
         return id;

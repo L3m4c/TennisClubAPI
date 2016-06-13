@@ -2,13 +2,13 @@ package entity.Reservation;
 
 import entity.User.User;
 import entity.converter.LocalDateTimeAttributeConverter;
-import javax.persistence.*;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class Reservation implements Serializable{
+public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

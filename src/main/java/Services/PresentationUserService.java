@@ -2,6 +2,7 @@ package services;
 
 import entity.PresentationUser.PresentationUser;
 import entity.PresentationUser.PresentationUserRepository;
+
 import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +33,7 @@ public class PresentationUserService {
         return StreamSupport.stream(presentationUserRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
+
     public List<PresentationUser> selectAll(List<Long> id) {
         return StreamSupport.stream(presentationUserRepository.findAll(id).spliterator(), false)
                 .collect(Collectors.toList());

@@ -7,9 +7,6 @@ import org.springframework.data.repository.query.Param;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by L3m4C on 30/11/2015.
- */
 public interface ReservationRepository extends CrudRepository<Reservation, Long> {
 
     @Query("select reserv from Reservation reserv " +

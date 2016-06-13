@@ -3,7 +3,7 @@ package entity.PresentationUser;
 import entity.User.User;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class PresentationUser {
@@ -20,7 +20,8 @@ public class PresentationUser {
     private Date modifiedDate;
     private Date createdDate;
 
-    public PresentationUser() {}
+    public PresentationUser() {
+    }
 
     public long getId() {
         return id;

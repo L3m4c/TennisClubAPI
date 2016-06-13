@@ -1,6 +1,7 @@
 package dto;
 
 import entity.User.User;
+
 import javax.validation.constraints.NotNull;
 
 public class UserDto {
@@ -16,8 +17,10 @@ public class UserDto {
     @NotNull
     private String role;
 
-    public UserDto() {}
-    public UserDto(User user){
+    public UserDto() {
+    }
+
+    public UserDto(User user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.name = user.getName();

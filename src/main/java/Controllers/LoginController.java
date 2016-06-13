@@ -1,14 +1,15 @@
 package controllers;
 
-import dto.UserDto;
-import services.LoginService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import dto.UserDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import services.LoginService;
+
 import java.util.Optional;
 
 @RestController
@@ -22,7 +23,7 @@ public class LoginController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     public ResponseEntity<String> login(@RequestBody EmailPassword emailPassword) throws JsonProcessingException {
         Optional<UserDto> userDto = loginService.findAnyUserWithEmailAndPasswordCombination(emailPassword.getEmail(), emailPassword.getPassword());
-        if(userDto.isPresent()) {
+        if (userDto.isPresent()) {
             ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
             String userDtoJson = ow.writeValueAsString(userDto.get());
             ResponseEntity<String> resp = new ResponseEntity<>(userDtoJson, HttpStatus.ACCEPTED);

@@ -3,10 +3,9 @@ package services;
 import dto.InformationTicketDto;
 import entity.InformationTicket.InformationTicket;
 import entity.InformationTicket.InformationTicketRepository;
-
 import entity.User.User;
-import javax.annotation.Resource;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +25,7 @@ public class InformationTicketService {
     public InformationTicket create(InformationTicket informationTicket) {
         return informationTicketRepository.save(informationTicket);
     }
+
     public InformationTicket create(String title, String content, long authorId) {
         InformationTicket informationTicket = new InformationTicket();
         informationTicket.setTitle(title);
@@ -63,6 +63,7 @@ public class InformationTicketService {
         return StreamSupport.stream(informationTicketRepository.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
+
     public List<InformationTicket> selectAll(List<Long> id) {
         return StreamSupport.stream(informationTicketRepository.findAll(id).spliterator(), false)
                 .collect(Collectors.toList());

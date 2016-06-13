@@ -26,16 +26,16 @@ public class ReservationDto implements Serializable {
         return startTime;
     }
 
+    public void setStartTime(Long startTime) {
+        this.startTime = startTime;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setStartTime(Long startTime) {
-        this.startTime = startTime;
     }
 
     public Long getEndTime() {

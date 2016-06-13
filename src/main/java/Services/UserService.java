@@ -3,10 +3,9 @@ package services;
 import dto.UserDto;
 import entity.User.User;
 import entity.User.UserRepository;
-
-import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Configurable;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;

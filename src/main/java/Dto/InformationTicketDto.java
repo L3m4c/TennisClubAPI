@@ -7,7 +7,8 @@ public class InformationTicketDto {
     private String content;
     private long authorId;
 
-    public InformationTicketDto() {}
+    public InformationTicketDto() {
+    }
 
     public InformationTicketDto(long id, String title, String content, long authorId) {
         this.setId(id);

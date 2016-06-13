@@ -5,7 +5,6 @@ import entity.Reservation.Reservation;
 import entity.Reservation.ReservationRepository;
 import entity.User.User;
 import entity.User.UserRepository;
-import javax.annotation.Resource;
 import main.Application;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 
 import static junit.framework.TestCase.assertFalse;

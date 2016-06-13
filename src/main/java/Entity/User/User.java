@@ -2,11 +2,14 @@ package entity.User;
 
 import dto.UserDto;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.io.Serializable;
 
 @Entity
-public class User implements Serializable{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,8 +20,10 @@ public class User implements Serializable{
     private String role;
     private String password;
 
-    public User() {}
-    public User(UserDto user){
+    public User() {
+    }
+
+    public User(UserDto user) {
         this.id = user.getId();
         this.email = user.getEmail();
         this.name = user.getName();

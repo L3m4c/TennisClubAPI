@@ -6,15 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Role{
+public class Role {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String roleLabel;
     private String roleKey;
 
-    public Role() {}
+    public Role() {
+    }
 
     public long getId() {
         return id;
