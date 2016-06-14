@@ -33,29 +33,29 @@ public class ReservationServiceTest {
     private UserRepository userRepository;
 
     final private LocalDateTime startTime = LocalDateTime.of(2016, 10, 10, 10, 00, 00);
-    private boolean setUpDone = false;
+    private Reservation reservation;
 
     @Before
     public void before() {
 
-        if (!setUpDone) {
-            UserDto userDto = new UserDto();
-            userDto.setEmail("test@test.test");
-            userDto.setName("test");
-            userDto.setRole("test");
-            userDto.setSurname("test");
-            userDto.setRole("admin");
-            user = userRepository.save(new User(userDto));
+        reservationRepository.deleteAll();
+        userRepository.deleteAll();
 
-            Reservation reservation = new Reservation();
-            reservation.setUser(user);
-            LocalDateTime endTime = startTime.plusHours(2L);
-            reservation.setStartTime(startTime);
-            reservation.setEndTime(endTime);
+        UserDto userDto = new UserDto();
+        userDto.setEmail("test@test.test");
+        userDto.setName("test");
+        userDto.setRole("test");
+        userDto.setSurname("test");
+        userDto.setRole("admin");
+        user = userRepository.save(new User(userDto));
 
-            reservationRepository.save(reservation);
-            setUpDone = true;
-        }
+        reservation = new Reservation();
+        reservation.setUser(user);
+        LocalDateTime endTime = startTime.plusHours(2L);
+        reservation.setStartTime(startTime);
+        reservation.setEndTime(endTime);
+
+        reservationRepository.save(reservation);
     }
 
     @Test
@@ -97,6 +97,7 @@ public class ReservationServiceTest {
         reservation.setEndTime(endTime);
         assertFalse(reservationService.isInCollisionWithAnotherReservation(reservation));
     }
+
     @Test
     public void isInCollisionWithAnotherReservationShouldReturnFlaseWhenReservationIsJustBeforeAnother() {
         Reservation reservation = new Reservation();
@@ -104,6 +105,11 @@ public class ReservationServiceTest {
         LocalDateTime endTime = startTime;
         reservation.setStartTime(startTime.minusHours(2L));
         reservation.setEndTime(endTime);
+        assertFalse(reservationService.isInCollisionWithAnotherReservation(reservation));
+    }
+
+    @Test
+    public void shouldReturnTrueAnywayIfItsTheSameReservation() {
         assertFalse(reservationService.isInCollisionWithAnotherReservation(reservation));
     }
 }
